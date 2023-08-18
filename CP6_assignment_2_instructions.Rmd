@@ -1,0 +1,108 @@
+---
+title: "CP6_Assignment_2_instructions"
+author: "Aidan O'Hara"
+date: "2023-08-18"
+output: pdf_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Exercises about Lists and Dataframes!
+
+## Exercise 1
+
+Make two vectors, `elevens` and `twelves`: - `elevens` is a vector of
+elements 0, 11, 22, 33,..., 121 - `twelves` is a vector of elements 0,
+12, 24, 36,..., 144
+
+Now, combine the vectors with `c()` to form `numVector` and place them
+in a list with `list()`.
+
+Notice the difference between combining vectors and placing vectors in a
+list, think about why the `length()` of each object is different.
+
+## Exercise 2
+
+Make a list, `aboutMe`, containing the elements below in the order in
+which they appear:
+
+-   your name as a `character` vector
+
+-   a vector containing 3 of your favorite colors, as character vectors,
+    `"yellow"` for example
+
+-   a logical object, indicating if the following is True or False: I am
+    excited about Bootcamp next week!
+
+-   finally, your favorite number, or the "best" number you can think of
+
+## Exercise 3
+
+Make a matrix, design it however you would like. Add the matrix to your
+`aboutMe` list, in the last position. *Not replaceing the 4th element
+from above, but adding it as a new 5th element*
+
+## Exercise 4
+
+Write a function, `typeofReport`. Use your new found skills with flow
+control, loops namely, such that your function, receiving a list as
+input, will return a vector describing the type of each element from the
+input list.
+
+`typeofReport(aboutMe)`
+`[1] "character" "character" "logical"   "double"    "double"`
+
+# Dataframes!
+
+## Exercise 1
+
+Copy `mtcars`, the built in dataframe, to your own variable name
+`msspCars`. Open the mtcars documentation, `?mtcars` and read about what
+each column in mtcars represents. Rename all columns in `msspCars` to
+better names that make sense to you.
+
+## Exercise 2
+
+Lets augment our dataframe some. Add the following columns and use the
+exact names given below for your new columns. '
+
+-   `weightActual`: `weight` 1000, weight in lbs, instead of 1000s of
+    lbs
+
+-   `powerToWeight`: `power`/`weightActual`, indicating how much oomph
+    each vehicle has per pound.
+
+## Exercise 3
+
+Create the following two subsets of `msspCars`: - `fastCars`: including
+only cars with a quarter mile time of less than 17 seconds. -
+`heavyCars`: including only cars with weight more than 4000 pounds.
+
+Use either `subset()` or `[]` notation, remember dataframes need a dual
+reference `[x,y]`. If you want all columns about rows that meet a
+specific condition, use `[x,]` leaving the column index blank.
+
+## Exercise 4
+
+Add a row to `msspCars`, about the 2002 Ford Focus, one of your TA's
+first car. The Ford Focus has the following properties:
+
+-   miles per gallon: 33.7
+-   cylinders: 4
+-   displacement: 120
+-   horsepower: 112
+-   read axle ratio: NA (I couldn't find this stat online)
+-   weight: 2.535
+-   quarter mile time: 15.4
+-   in line engine - 5 gear forward transmission
+-   a single carburetor
+-   actual weight: 2535
+-   power to weight ratio of: 112/2535
+
+Once you've added your new row, be sure to name it "Ford Focus"
+accordingly.

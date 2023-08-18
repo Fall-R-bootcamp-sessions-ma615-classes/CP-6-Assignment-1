@@ -1,0 +1,234 @@
+---
+title: "Lists and Dataframes"
+author: "MSSP Bootcamp 2023"
+date: 08/18/2023
+format: 
+  revealjs:
+    theme: solarized
+title-slide-attributes:
+    data-background-image: "images/10_artistic_summary.jpg"
+    data-background-size: contain
+    data-background-opacity: "1"
+date-format: "DD MMM YYYY"
+css: style1.css
+engine: knitr
+---
+
+## Lists  {.scrollable}
+
+**List:** an ordered collection of objects 
+
+   - The components of a list can be of any type.
+
+
+   - The list making function:  
+   
+       Lst <- list(name_1=object_1, ..., name_m=object_m)  
+       
+       Note: names for components are optional
+       
+**example**     
+
+```{r}
+## list exampe 
+Lst <- list(name="Fred", wife="Mary", no.children=3,
+child.ages=c(4,7,9))
+
+## How to examine list components 
+
+str(Lst)           ## See environment tab
+View(Lst)                   ## click on widget in environment
+
+   ## 
+Lst[1]             ## brackets are operators in R
+
+typeof(Lst[1])     ## use typeof() to see what's going ob
+
+Lst$wife
+
+typeof(Lst$wife)
+
+Lst["wife"]
+typeof(Lst["wife"])
+
+Lst[["wife"]]
+typeof(Lst[["wife"]])
+
+Lst["child.ages"]
+
+
+
+Lst$child.ages[2]
+
+str(Lst)
+
+typeof(Lst)
+
+typeof(Lst$child.ages)
+
+
+
+Lst
+
+Lst[3]
+
+Lst[4]
+
+typeof(Lst[4])
+
+Lst[[4]]
+
+typeof(Lst[[4]])
+
+```
+
+## dataframes  {.scrollable}
+
+A data frame is a list of equal-length vectors.
+
+Data frames have names(), colnames(), and rownames(). Note that names() and colnames() are the same thing. 
+
+The length() of a data frame is the length of the underlying list of vectors.  So length() is that same as ncol(). 
+
+nrow() gives the number of rows.
+
+Making a dataframe from scratch
+```{r}
+
+### using data.frame() 
+
+employee <- c('John Doe','Peter Gynn','Jolie Hope')
+salary <- c(71000, 93400, 86800)
+startdate <- as.Date(c('2010-11-1','2008-3-25','2007-3-14'))
+
+emp_data <- data.frame(employee, salary, startdate)
+
+str(emp_data)
+
+############## using cbind() 
+## shoping list
+
+items <- list("eggs", "asparagus", "quinoa", "mangos", "oranges" )
+prices <- c(5.50, 2.30, 4, 3.20, 7)
+typeof(items)
+typeof(prices)
+
+slist <- cbind(items, prices)
+typeof(slist)
+is.data.frame(slist)
+
+slist <- as.data.frame(slist)
+typeof(slist)
+is.data.frame(slist)
+
+slist_u <- unlist(slist)
+is.data.frame(slist_u)
+is.vector(slist_u)
+str(slist_u)
+
+```
+
+
+
+Data frames from R built-in data set mtcars.
+```{r}
+
+## What is built-in data?
+
+data()
+
+## Build-in data comes with packages
+
+library(MASS)
+data()
+
+
+
+data(mtcars)
+
+typeof(mtcars)
+is.data.frame(mtcars)
+
+length(mtcars)
+ncol(mtcars)
+
+nrow(mtcars)
+
+colnames(mtcars)  ## what do these mean?
+
+
+
+## data frames are 2d stuctures (like matrices)
+## data frames are the primary R data structure used for data analysis
+
+
+## The data in a data frame can be accessed by row and column indexes
+
+# by row.
+R3 <- mtcars[3,]  ## 3rd row, all columns 
+typeof(R3)
+R3$mpg
+
+UR3 <- unlist(R3)
+typeof(UR3)
+UR3["mpg"]
+
+
+### data frame from scratch
+
+employee <- c('John Doe','Peter Gynn','Jolie Hope')
+salary <- c(71000, 93400, 86800)
+startdate <- as.Date(c('2010-11-1','2008-3-25','2007-3-14'))
+
+emp_data <- data.frame(employee, salary, startdate)
+
+
+
+
+
+
+#####  Investigate unlist()
+aa <- cbind(items,prices)
+length(items)
+length(prices)
+
+
+
+
+
+
+
+# by column
+mtcars[, 1]  ## note that the row names are not counted as a column
+             ## mtcars[ ,1] Is the column containing the MPG for all 
+             ## rows in mtcars.
+
+# by row and column
+mtcars[3,4]  ## horsepower of the Datsum 710 = 93
+
+## The strings identifying rows and columns can be used, too
+mtcars["Datsun 710","hp"]
+
+# In addition to access using brackets, Column names can be used
+
+mtcars$cyl  ## column containing the number of cylinders for each row
+
+# row names and column names can be accessed through the functions
+# rownames() and colnames()
+
+rownames(mtcars)
+colnames(mtcars)
+
+## so, fow example
+
+## to get a list of cars with 4 or 6 cylinders in mtcars
+
+rownames(mtcars)[which(mtcars$cyl == 4)]
+
+rownames(mtcars)[which(mtcars$cyl == 6)]
+
+
+
+```
+
+
